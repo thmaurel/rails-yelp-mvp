@@ -1,0 +1,24 @@
+<div class="container">
+
+  <h1>Hey ! </h1>
+
+  <!-- app/views/restaurants/_form.html.erb -->
+  <%= simple_form_for(@restaurant) do |f| %>
+    <% if @restaurant.errors.any? %>
+      <div class="errors-container">
+        <ul>
+          <% @restaurant.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <!-- [...] all the fields -->
+    <%= f.input :name %>
+    <%= f.input :address %>
+    <%= f.input :phone_number %>
+    <%= f.input :category, collection: ["chinese", "italian", "japanese", "french", "belgian"] %>
+    <%= f.submit class: 'btn btn-primary'%>
+  <% end %>
+</div>
