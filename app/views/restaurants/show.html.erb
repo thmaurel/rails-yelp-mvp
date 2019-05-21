@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container text-center">
 
   <h1><%= @restaurant.name %></h1>
 
@@ -10,11 +10,18 @@
   <h2>Vos avis</h2>
   <hr>
   <div class="review">
-    <% @restaurant.reviews.each do |review| %>
-
-    <p><%= '⭐' * review.rating %></p>
-
-    <p><%= review.content %></p>
+    <% @restaurant.reviews.each_with_index do |review, i| %>
+    <% if i.even? %>
+      <div style="background-color: #F3DE8A">
+        <p><%= '⭐' * review.rating %></p>
+        <p><%= review.content %></p>
+      </div>
+    <% else %>
+      <div style="background-color: #F1DB4B">
+        <p><%= '⭐' * review.rating %></p>
+        <p><%= review.content %></p>
+      </div>
+    <% end %>
 
     <hr>
 
